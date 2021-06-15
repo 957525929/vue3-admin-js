@@ -1,11 +1,26 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
+  //登录
   {
     path: "/",
     name: "Login",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/account/Login.vue"),
+  },
+  //注册
+  {
+    path: "/Register",
+    name: "Register",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/account/Register.vue"),
+  },
+  //忘记密码
+  {
+    path: "/Forget",
+    name: "Forget",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/account/Forget.vue"),
   },
   {
     path: "/about",
