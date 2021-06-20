@@ -1,0 +1,29 @@
+#本地环境联调接口的标记匹配
+VUE_APP_FLAG = '/devApi'
+
+#接口地址
+VUE_APP_APIURL = 'http://account.web-jshtml.cn/api'
+
+VUE_APP_ACCOUNT = 'http://account.web-jshtml.cn/api'
+VUE_APP_INFO = 'http://info.web-jshtml.cn/api'
+VUE_APP_PAY = 'http://pay.web-jshtml.cn/api'
+
+#帐户体系
+VUE_APP_ACCOUNT_APIURL = ''
+
+#用户体系
+VUE_APP_USER_APIURL = ''
+
+
+##================
+1、后端解决跨域  http://account.web-jshtml.cn/api
+
+2、二级域名的服务访问
+账户体系：http://account.web-jshtml.cn/api
+信息服务：http://info.web-jshtml.cn/api
+支付服务：http://pay.web-jshtml.cn/api
+
+3、域名的目录方式的访问
+账户体系：http://api.web-jshtml.cn/account
+信息服务：http://api.web-jshtml.cn/info
+支付服务：http://api.web-jshtml.cn/pay
