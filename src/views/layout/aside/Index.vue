@@ -3,26 +3,15 @@
     <img v-if="collapsed" :src="data.logo_min" alt="vue前端系统" />
     <img v-else :src="data.logo" alt="vue前端系统" />
   </h1>
-  <a-menu
-    class="aside-menu"
-    v-model:openKeys="data.openKeys"
-    v-model:selectedKeys="data.selectedKeys"
-    mode="inline"
-    theme="dark"
-    @click="selectMenu"
-    @openChange="openMenu"
-  >
+  <a-menu class="aside-menu" v-model:openKeys="data.openKeys" v-model:selectedKeys="data.selectedKeys" mode="inline" theme="dark" @click="selectMenu" @openChange="openMenu">
     <template v-for="item in routers">
       <template v-if="!item.hidden">
         <!---这里是一级---->
         <a-menu-item v-if="hasOnlyChildren(item)" :key="item.path">
           <router-link :to="item.children[0].path">
             <span class="anticon">
-              <svg-icon
-                :iconName="item.meta && item.meta.icon"
-                className="aside-svg"
-              ></svg-icon
-            ></span>
+              <svg-icon :iconName="item.meta && item.meta.icon" className="aside-svg"></svg-icon>
+            </span>
             <span>{{
               item.children[0].meta && item.children[0].meta.title
             }}</span>

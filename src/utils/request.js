@@ -1,15 +1,17 @@
 import axios from "axios"
+import { getToken } from "./cookies";
 import { message } from "ant-design-vue";
 
 const service = axios.create({
-    baseURL: "",
+    baseURL: process.env.VUE_APP_FLAG,
     timeout: 5000,     //5秒
 });
 
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {
-    console.log(config)
-    // 在发送请求之前做些什么
+    // console.log(config)
+    // 在发送请求之前做些什么Authorization
+    config.headers["Authorization"] = getToken();
     return config;
 }, function (error) {
     // 对请求错误做些什么

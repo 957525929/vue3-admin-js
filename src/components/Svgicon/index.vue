@@ -4,7 +4,7 @@
   </svg>
 </template>
 <script>
-import { context } from "ant-design-vue/lib/vc-image/src/PreviewGroup";
+
 export default {
   name: "SvgIcon",
   props: {

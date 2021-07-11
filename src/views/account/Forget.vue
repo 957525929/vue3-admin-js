@@ -1,59 +1,30 @@
 <template>
   <div class="account">
     <div class="form-wrap">
-      <a-form
-        name="custom-validation"
-        ref="ruleForm"
-        :model="account_form"
-        :rules="rules_form"
-        @finish="handleFinish"
-      >
+      <a-form name="custom-validation" ref="ruleForm" :model="account_form" :rules="rules_form" @finish="handleFinish">
         <label>用户名</label>
         <a-form-item name="username">
-          <a-input
-            v-model:value="account_form.username"
-            type="text"
-            autocomplete="off"
-          />
+          <a-input v-model:value="account_form.username" type="text" autocomplete="off" />
         </a-form-item>
 
         <label>密码</label>
         <a-form-item name="password">
-          <a-input
-            v-model:value="account_form.password"
-            type="text"
-            utocomplete="off"
-          />
+          <a-input v-model:value="account_form.password" type="text" autocomplete="off" />
         </a-form-item>
 
         <label>确认密码</label>
         <a-form-item name="passwords">
-          <a-input
-            v-model:value="account_form.passwords"
-            type="text"
-            utocomplete="off"
-          />
+          <a-input v-model:value="account_form.passwords" type="text" autocomplete="off" />
         </a-form-item>
         <label>验证码</label>
-        <a-form-item name="code">
+        <a-form-item>
           <a-row :gutter="15">
             <a-col :span="14">
-              <a-input
-                v-model:value="account_form.code"
-                type="text"
-                utocomplete="off"
-                maxlength="6"
-            /></a-col>
-            <a-col :span="10"
-              ><a-button
-                type="primary"
-                @click="getCode"
-                block
-                :disabled="button_disabled"
-                :loading="button_loading"
-                >{{ button_text }}</a-button
-              ></a-col
-            >
+              <a-input v-model:value="account_form.code" type="text" autocomplete="off" maxlength="6" />
+            </a-col>
+            <a-col :span="10">
+              <a-button type="primary" @click="getCode" block :disabled="button_disabled" :loading="button_loading">{{ button_text }}</a-button>
+            </a-col>
           </a-row>
         </a-form-item>
 
@@ -195,6 +166,7 @@ export default {
       dataItem.timer && clearInterval(dataItem.timer);
       //开启定时器
       dataItem.timer = setInterval(() => {
+
         const s = dataItem.sec--;
         dataItem.button_text = `${s}秒`;
         if (s <= 0) {
@@ -203,7 +175,7 @@ export default {
         }
       }, 1000);
     };
-    onMounted(() => {});
+    onMounted(() => { });
     return {
       ...form,
       ...data,

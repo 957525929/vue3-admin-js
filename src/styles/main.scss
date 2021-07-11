@@ -14,3 +14,33 @@
 .text-center{
     text-align: center;
 }
+
+//float
+.float-right{float: right;}
+
+.float-left{float: left;}
+
+//margin
+.ml-10{margin-left: 10px;}
+.mr-10{margin-right: 10px;}
+.mb-30{margin-bottom: 30px;}
+.mb-20{margin-bottom: 20px;}
+
+//padding
+.pt-30 {padding-top: 30px;}
+.layout-1{
+    position: relative;
+    top: 26px;
+    left:0;
+    bottom: 0;
+    right: 0;
+}
+
+
+//line
+.line{position: relative; border-bottom: 2px solid #f7f9f9;}
+
+//width
+.w-200{width: 200px;}
+
+.tl-center{text-align: center;}

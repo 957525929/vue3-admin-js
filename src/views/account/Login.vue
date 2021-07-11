@@ -4,7 +4,7 @@
       <a-form name="custom-validation" ref="ruleForm" :model="account_form" :rules="rules_form" @finish="handleFinish">
         <label>用户名</label>
         <a-form-item name="username">
-          <a-input v-model:value="account_form.username" type="text" :disabled="input_diabled.username" autocomplete="off" />
+          <a-input v-model:value="account_form.username" type="text" autocomplete="off" placeholder="请输入用户名" />
         </a-form-item>
 
         <label>密码</label>
@@ -42,7 +42,7 @@ import CaptCha from "@/components/Captcha";
 //加密
 import md5 from 'js-md5';
 //cookie
-import { setToken, setUsername, getToken } from "@/utils/cookies"
+import { setToken, setUsername, getToken } from "@/utils/cookies";
 export default {
   name: "Login",
   components: { CaptCha },
@@ -58,7 +58,7 @@ export default {
      * 需要用户返回上一个页面就用push（追加了一个历史记录）
      * 不让用户返回上一个界面就用replace（替换了当前的历史记录）
      */
-    const { replace } = useRouter();
+    const { replace, push } = useRouter();
 
     //校验用户名
     const checkUsername = async (rule, value, callback) => {
@@ -133,6 +133,10 @@ export default {
         const data = response.content;
         setToken({ token: data.token })
         setUsername({ value: data.username })
+        //进入后台
+        push({
+          name: "Index"
+        })
       })
     };
 

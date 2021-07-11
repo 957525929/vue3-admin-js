@@ -20,7 +20,7 @@
         <a-form-item name="code">
           <a-row :gutter="15">
             <a-col :span="14">
-              <a-input v-model:value="account_form.code" type="text" utocomplete="off" maxlength="6" />
+              <a-input v-model:value="account_form.code" type="text" autocomplete="off" maxlength="6" />
             </a-col>
             <a-col :span="10">
               <a-button type="primary" @click="getCode" block :disabled="disabled_code_button" :loading="button_loading">{{ button_text }}</a-button>
@@ -58,7 +58,7 @@ import { useRouter } from "vue-router";
 import CaptCha from "@/components/Captcha";
 //加密
 import md5 from 'js-md5';
-import { getAES, getDAes } from "@/utils/crypto"
+// import { getAES, getDAes } from "@/utils/crypto"
 
 export default {
   name: "Login",
@@ -149,8 +149,8 @@ export default {
       },
       account_form: {
         username: "",
-        password: "qaz123",
-        passwords: "qaz123",
+        password: "",
+        passwords: "",
         code: "",
       },
       input_diabled: {
@@ -168,7 +168,6 @@ export default {
       //获取验证码
       button_text: "获取验证码",
       button_loading: false,
-      button_disabled: false,
       disabled_code_button: true,
 
       sec: 0,
@@ -193,7 +192,7 @@ export default {
       // console.log("加密:" + getAES("qqq123"))
       // console.log("解密:" + getDAes("b3dbfaff46d25c83cee5786c510690a6"))
       Register(requestData).then(response => {
-        const code = response.content.coder;
+        const code = response.content.code;
         const msg = code ? "注册成功" : response.msg;
         message.success(msg)
         //注册成功跳转登录页面，不需要返回上一个页面

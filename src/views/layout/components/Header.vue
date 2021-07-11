@@ -12,36 +12,21 @@
           <a-menu>
             <a-menu-item key="0">
               <div class="menu-item">
-                <svg-icon
-                  iconName="user1"
-                  className="header-menu-svg"
-                ></svg-icon>
+                <svg-icon iconName="user1" className="header-menu-svg"></svg-icon>
                 18350076748
               </div>
             </a-menu-item>
             <a-menu-divider />
             <a-menu-item key="1">
               <div class="menu-item menu-lang">
-                <svg-icon
-                  iconName="lang"
-                  className="header-menu-svg"
-                ></svg-icon>
-                <span
-                  v-for="item in data.lang"
-                  :key="item.value"
-                  @click="toggleLang(item.value)"
-                  :class="{ current: data.lang_current == item.value }"
-                  >{{ item.label }}</span
-                >
+                <svg-icon iconName="lang" className="header-menu-svg"></svg-icon>
+                <span v-for="item in data.lang" :key="item.value" @click="toggleLang(item.value)" :class="{ current: data.lang_current == item.value }">{{ item.label }}</span>
               </div>
             </a-menu-item>
             <a-menu-divider />
             <a-menu-item key="3">
               <div class="menu-item">
-                <svg-icon
-                  iconName="exit"
-                  className="header-menu-svg"
-                ></svg-icon>
+                <svg-icon iconName="exit" className="header-menu-svg"></svg-icon>
                 {{ $t("header_menu.logout") }}
               </div>
             </a-menu-item>

@@ -72,13 +72,20 @@ const routes = [
         component: () => import("../views/admin/Role.vue"),
       },
       {
-        path: "/c",
-        name: "C",
-        hidden: true,
+        path: "/user",
+        name: "User",
         meta: {
-          title: "用户管理1"
+          title: "用户管理"
         },
         component: () => import("../views/admin/User.vue"),
+      },
+      {
+        path: "/menu",
+        name: "Mneu",
+        meta: {
+          title: "菜单列表"
+        },
+        component: () => import("../views/admin/Menu.vue"),
       },
     ]
   },
@@ -90,7 +97,8 @@ const routes = [
       icon: "informtion"
     },
     component: () => import("../views/layout/Index.vue"),
-    children: []
+    children: [
+    ]
   },
   {
     path: "/member",

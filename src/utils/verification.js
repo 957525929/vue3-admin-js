@@ -13,3 +13,21 @@ export function checkCode(value) {
     let regCode = /^\d{6}$/;
     return regCode.test(value);
 }
+
+//验证码  纯数字
+export function checkEmail(value) {
+    let regEmail = /^\w+@[a-z0-9]+\.[a-z]{2,4}$/;;
+    return regEmail.test(value);
+}
+
+//汉字
+export function checkTruename(value) {
+    let regEmail = /^[\u2E80-\u9FFF]+$/;
+    return regEmail.test(value);
+}
+
+//身份证
+export function checkCardId(value) {
+    let regCardId = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+    return regCardId.test(value);
+}
