@@ -51,7 +51,7 @@
     <template #operation=" {record}">
       <a-button type="primary" @click="handlerEdit(record)">编辑</a-button>
       <a-button type="dashed">详情</a-button>
-      <a-button type="danger" @click="deleteConfirm(record)">删除</a-button>
+      <a-button type="danger" @click="handlerDeleteConfirm(record)">删除</a-button>
     </template>
   </a-table>
   <a-row class="pt-30">
@@ -67,7 +67,7 @@
 
 <script>
 import ModelUser from "@/components/Modal/User";
-import { ref, reactive, onMounted, createVNode } from 'vue';
+import { ref, reactive, onMounted, createVNode, getCurrentInstance } from 'vue';
 //API
 import { UserList, UserRemove, UserStatus } from "@/api/user";
 
@@ -81,6 +81,7 @@ export default {
   },
   props: {},
   setup(props) {
+    const { proxy } = getCurrentInstance();
     const data = reactive({
       columns: [
         {
@@ -237,24 +238,11 @@ export default {
       })
     }
     //删除
-    const deleteConfirm = (params) => {
-      Modal.confirm({
-        title: '温馨提示',
-        icon: createVNode(ExclamationCircleOutlined),
-        content: '确认删除此信息，删除后无法恢复',
-        okText: '确认',
-        okType: 'danger',
-        cancelText: '取消',
-
-        onOk() {
-          if (params) { data.delete_id = params.member_id; }
-          deleteApi();
-        },
-
-        onCancel() {
-          console.log('Cancel');
-        },
-      });
+    const handlerDeleteConfirm = (params) => {
+      if (params) { data.delete_id = params.member_id; }
+      proxy.deleteConfirm({
+        ok_fun: () => deleteApi()
+      })
     }
 
     const deleteApi = () => {
@@ -278,7 +266,7 @@ export default {
       handlerEdit,
       getUserList,
       handlerSwitch,
-      deleteConfirm,
+      handlerDeleteConfirm,
       deleteApi,
       handlerSearch,
       handlePage,

@@ -1,5 +1,5 @@
 <template>
-  <div class="account">
+  <div>
     <div class="form-wrap">
       <a-form name="custom-validation" ref="ruleForm" :model="account_form" :rules="rules_form" @finish="handleFinish">
         <label>用户名</label>

@@ -20,6 +20,12 @@ export function matchKey(field, value) {
 
 //响应文本数据转换
 // export function requestDataFormat(data, field, matchField) {
+/**
+ * 
+ * @param {Object} data  响应报文数据
+ * @param {Object} form  表单的key
+ * @param {Object} form  表单的key
+ */
 export function requestDataFormat(params) {
     const request_data = params.data;
     const keys = Object.keys(request_data);
@@ -31,7 +37,7 @@ export function requestDataFormat(params) {
         // console.log(key);
         if (keys.includes(key)) {  //匹配响应报文和表单的字段
             // console.log(key);
-            if (params.match.includes(key)) { //匹配是否转换数据的字段
+            if (params.match && params.match.includes(key)) { //匹配是否转换数据的字段
                 formState[key] = matchKey(key, request_data[key]);
             } else {
                 formState[key] = request_data[key];
